@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog Post Form</title>
+    <!-- Custom CSS for styling -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Display the form title based on whether it's an edit or create form -->
+      <h1>{{ form.instance.pk|yesno:"Edit Blog Post,Create Blog Post" }}</h1>
+      <form name="blogPostForm" method="post">
+        {% csrf_token %}
+        <!-- Render the form fields -->
+        {{ form.as_p }}
+        <!-- Display form errors if any -->
+        {% if form.errors %}
+        <div class="alert alert-danger">
+          <ul>
+            {% for field in form %} {% for error in field.errors %}
+            <li>{{ error }}</li>
+            <!-- Displayed form errors -->
+            {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+            <!-- Displayed non-field errors -->
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        <!-- Submit button -->
+        <button type="submit">Publish</button>
+      </form>
+    </div>
+  </body>
+</html>

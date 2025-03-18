@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Delete Blog Post</title>
+    <!-- Custom CSS for styling -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Confirmation message for deleting the blog post -->
+      <h1 class="my-4">Are you sure you want to delete "{{ post.title }}"?</h1>
+      <form method="post">
+        {% csrf_token %}
+        <!-- Submit button to confirm deletion -->
+        <button type="submit" class="btn btn-danger">Yes, delete</button>
+        <!-- Link to cancel deletion and go back to the blog post detail page -->
+        <a href="{% url 'blogpost_detail' post.pk %}" class="btn btn-secondary">
+          Cancel
+        </a>
+      </form>
+    </div>
+  </body>
+</html>

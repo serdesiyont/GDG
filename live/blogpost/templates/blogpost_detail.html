@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ post.title }}</title>
+    <!-- Bootstrap CSS for styling -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="my-4">{{ post.title }}</h1>
+      <p>{{ post.content }}</p>
+      <p><em>Published by {{ post.name }} on {{ post.created_at }}</em></p>
+
+      <h2 class="my-4">Comments</h2>
+      <ul class="list-group mb-4">
+        <!-- Loop through each comment and display its details -->
+        {% for comment in comments %}
+        <li class="list-group-item">
+          <p>{{ comment.content }}</p>
+          <p><em>Commented on {{ comment.created_at }}</em></p>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <h2>Add a Comment</h2>
+      <form method="post">
+        {% csrf_token %}
+        <!-- Render the comment form fields -->
+        {{ comment_form.as_p }}
+        <!-- Display form errors if any -->
+        {% if comment_form.errors %}
+        <div class="alert alert-danger">
+          <ul>
+            {% for field in comment_form %} {% for error in field.errors %}
+            <li>{{ error }}</li>
+            <!-- Displayed form errors -->
+            {% endfor %} {% endfor %} {% for error in
+            comment_form.non_field_errors %}
+            <li>{{ error }}</li>
+            <!-- Displayed non-field errors -->
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+      </form>
+    </div>
+  </body>
+</html>

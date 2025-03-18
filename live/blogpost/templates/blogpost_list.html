@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog Posts</title>
+    <!-- Bootstrap CSS for styling -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="my-4">Blog Posts</h1>
+      <!-- Link to create a new blog post -->
+      <a href="{% url 'blogpost_create' %}" class="btn btn-primary mb-3">
+        Create New Blog Post
+      </a>
+      <ul class="list-group">
+        <!-- Loop through each post and display its details -->
+        {% for post in posts %}
+        <li class="list-group-item">
+          <h5>
+            <!-- Link to the blog post detail page -->
+            <a href="{% url 'blogpost_detail' post.pk %}">{{ post.title }}</a>
+          </h5>
+          <p>{{ post.content }}</p>
+          <!-- Link to edit the blog post -->
+          <a
+            href="{% url 'blogpost_update' post.pk %}"
+            class="btn btn-secondary btn-sm"
+          >
+            Edit
+          </a>
+          <!-- Link to delete the blog post -->
+          <a
+            href="{% url 'blogpost_delete' post.pk %}"
+            class="btn btn-danger btn-sm"
+          >
+            Delete
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>

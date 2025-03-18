@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif; /* Set the font family */
+  background-color: #f8f9fa; /* Set the background color */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px; /* Set the maximum width */
+  margin: 50px auto; /* Center the container */
+  padding: 20px;
+  background-color: #fff; /* Set the background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a box shadow */
+}
+
+h1 {
+  margin-bottom: 20px; /* Add margin below the heading */
+}
+
+form {
+  display: flex;
+  flex-direction: column; /* Arrange form elements in a column */
+}
+
+label {
+  margin-bottom: 5px; /* Add margin below the label */
+  font-weight: bold; /* Make the label bold */
+}
+
+input,
+textarea {
+  margin-bottom: 15px; /* Add margin below the input/textarea */
+  padding: 10px;
+  border: 1px solid #ced4da; /* Set the border color */
+  border-radius: 4px; /* Round the corners */
+  font-size: 16px;
+  transition: border-color 0.3s; /* Add a transition effect */
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff; /* Set the background color */
+  color: #fff; /* Set the text color */
+  border: none;
+  border-radius: 4px; /* Round the corners */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s; /* Add a transition effect */
+}
+
+button:hover {
+  background-color: #0056b3; /* Change background color on hover */
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Set the background color for danger button */
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Change background color on hover */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Set the background color for secondary button */
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Change background color on hover */
+}
